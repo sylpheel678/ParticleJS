@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ParticleJS - デモ</title>
+
+  <!-- CreateJSのライブラリー読み込み -->
+  <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+
+  <!-- パーティクルシステムのライブラリー読み込み -->
+  <script src="particlejs.js"></script>
+
+  <!-- JS -->
+  <script>
+    var particleSystem = null;
+    var stage = null;
+
+    //  ウィンドウのロードが終わり次第、初期化コードを呼び出す。
+    window.addEventListener("load", function () {
+      // Stageオブジェクトを作成します。表示リストのルートになります。
+      stage = new createjs.Stage("myCanvas");
+
+      // パーティクルシステム作成します。
+      particleSystem = new particlejs.ParticleSystem();
+
+      // パーティクルシステムの描画コンテナーを表示リストに登録します。
+      stage.addChild(particleSystem.container);
+
+      // Particle Develop( http://ics-web.jp/projects/particle-develop/ ) から書きだしたパーティクルの設定を読み込む
+      particleSystem.importFromJson(
+        // パラメーターJSONのコピー＆ペースト ここから--
+        {
+          "bgColor": "#00000",
+          "width": 661,
+          "height": 512,
+          "emitFrequency": 30,
+          "startX": 1200,
+          "startXVariance":  200,
+          "startY": 0,
+          "startYVariance": "150",
+
+          "rotationMode": "1",
+          "initialRotation": 90,
+          "initialRotationVariance": 30,
+          "initialRotationSpeed": 0,
+          "initialRotationSpeedVariance": 2,
+
+          "initialDirection": "135.5",
+          "initialDirectionVariance": "90.5",
+          "initialSpeed": "2.4",
+          "initialSpeedVariance": "3.0",
+
+          "friction": "0.0006",
+          "accelerationSpeed": "0.05205",
+          "accelerationDirection": "165.7",
+
+          "startScale": "0.5",
+          "startScaleVariance": "0.3",
+          "finishScale": "0.2",
+          "finishScaleVariance": "0",
+          "lifeSpan": "400",
+          "lifeSpanVariance": "500",
+          "startAlpha": 1,
+          "startAlphaVariance": "1",
+          "finishAlpha": 0.35,
+          "finishAlphaVariance": 0,
+          "shapeIdList": [
+            "sakura"
+          ],
+          "startColor": {
+            "hue": 312,
+            "hueVariance": 4,
+            "saturation": 71,
+            "saturationVariance": 78,
+            "luminance": 83,
+            "luminanceVariance": 16
+          },
+          "blendMode": false,
+          "alphaCurveType": "0"
+        }
+        // パラメーターJSONのコピー＆ペースト ここまで---
+      );
+
+      // フレームレートの設定
+      createjs.Ticker.framerate = 60;
+      // requestAnimationFrameに従った呼び出し
+      createjs.Ticker.timingMode = createjs.Ticker.RAF;
+      // 定期的に呼ばれる関数を登録
+      createjs.Ticker.addEventListener("tick", handleTick);
+    });
+
+    function handleTick() {
+
+      // パーティクルの発生・更新
+      particleSystem.update();
+
+      // 描画を更新する
+      stage.update();
+    }
+  </script>
+
+  <!-- CSS -->
+  <style>
+    canvas {
+      background-color: black;
+    }
+
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+  </style>
+</head>
+<body>
+<canvas width="960" height="540" id="myCanvas"></canvas>
+</body>
+</html>

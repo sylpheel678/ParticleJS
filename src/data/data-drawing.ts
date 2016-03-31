@@ -31,6 +31,18 @@ export class DrawingData {
   /** 初期速度のばらつきです。 */
   initialSpeedVariance:number = 0;
 
+  /** 回転計算の種類です。 */
+  rotationMode:number = 0;
+  /** 初期回転角度 (度)です。 */
+  initialRotation:number = 0;
+  /** 初期速度のばらつきです。 */
+  initialRotationVariance:number = 0;
+
+  /** 初期回転角度 (度)です。 */
+  initialRotationSpeed:number = 0;
+  /** 初期速度のばらつきです。 */
+  initialRotationSpeedVariance:number = 0;
+
   /** 摩擦です。 */
   friction:number = 0;
 

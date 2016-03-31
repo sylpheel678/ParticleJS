@@ -153,9 +153,13 @@ export class ParticleSystem {
 			particle.x += particle.vx;
 			particle.y += particle.vy;
 
+			//	回転スピード
+			particle.rotation = particle.rotation + particle.rotationSpeed;
+
 			// 座標の適用
 			particle.particleShape.x = particle.x;
 			particle.particleShape.y = particle.y;
+
 
 			let lifeParcent = particle.currentLife / particle.totalLife;
 
@@ -174,6 +178,9 @@ export class ParticleSystem {
 
 			let scale = this.calcCurrentValue(particle.startScale, particle.finishScale, lifeParcent);
 			particle.particleShape.scaleX = particle.particleShape.scaleY = scale;
+
+			//	回転角度
+			particle.particleShape.rotation = particle.rotation;
 
 			//  パーティクルが死んでいたら、オブジェクトプールに移動
 			if (particle.currentLife < 0) {
@@ -323,6 +330,10 @@ export class ParticleSystem {
 		//  スケール
 		particle.startScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.startScale, this._drawingData.startScaleVariance, false));
 		particle.finishScale = Math.max(0, this.calcRandomValueWithVariance(this._drawingData.finishScale, this._drawingData.finishScaleVariance, false));
+
+		//  回転
+		particle.rotation = this.calcRandomValueWithVariance(this._drawingData.initialRotation, this._drawingData.initialRotationVariance, false);
+		particle.rotationSpeed = this.calcRandomValueWithVariance(this._drawingData.initialRotationSpeed, this._drawingData.initialRotationSpeedVariance, false);
 
 		// ブレンドモードを設定
 		particle.particleShape.compositeOperation = this._drawingData.blendMode == true ? "lighter" : null;
@@ -603,6 +614,74 @@ export class ParticleSystem {
 	public get initialSpeedVariance():number {
 		return this._drawingData.initialSpeedVariance;
 	}
+
+
+	/**
+	 * 開始時の回転角度です。
+	 * @param value
+	 */
+	public set initialRotation(value:number) {
+		this._drawingData.initialRotation = value;
+	}
+
+	/**
+	 * 開始時の回転角度です。
+	 * @returns {number}
+	 */
+	public get initialRotation():number {
+		return this._drawingData.initialRotation;
+	}
+
+
+
+	/**
+	 * 開始時の回転角度のばらつきです。
+	 * @param value
+	 */
+	public set initialRotationVariance(value:number) {
+		this._drawingData.initialRotationVariance = value;
+	}
+
+	/**
+	 * 開始時の回転角度のばらつきです。
+	 * @returns {number}
+	 */
+	public get initialRotationVariance():number {
+		return this._drawingData.initialRotationVariance;
+	}
+
+	/**
+	 * 開始時の回転スピードです。
+	 * @param value
+	 */
+	public set initialRotationSpeed(value:number) {
+		this._drawingData.initialRotationSpeed = value;
+	}
+
+	/**
+	 * 開始時の回転スピードです。
+	 * @returns {number}
+	 */
+	public get initialRotationSpeed():number {
+		return this._drawingData.initialRotationSpeed;
+	}
+
+	/**
+	 * 開始時の回転スピードのばらつきです。
+	 * @param value
+	 */
+	public set initialRotationSpeedVariance(value:number) {
+		this._drawingData.initialRotationSpeedVariance = value;
+	}
+
+	/**
+	 * 開始時の回転スピードのばらつきです。
+	 * @returns {number}
+	 */
+	public get initialRotationSpeedVariance():number {
+		return this._drawingData.initialRotationSpeedVariance;
+	}
+
 
 	/**
 	 * 摩擦です。

@@ -26,6 +26,11 @@ export class Particle {
   /** パーティクルが方向ベクトルです。 */
   public vy:number;
 
+  /** 開始時の回転角度です。 */
+  public rotation:number;
+  /** 回転スピードです。 */
+  public rotationSpeed:number;
+
   /** アルファのイージング関数です。 */
   public easingAlpha:(life:number)=>number;
   /** 開始アルファ値です0〜1.0の間になります。 */
@@ -44,6 +49,7 @@ export class Particle {
   public startColor:ColorData;
   /** カラーを設定するCreateJSのグラフィックスコマンドです。*/
   public colorCommand:any;
+
 
   /** アルファカーブ */
   public alphaCurveType:number;

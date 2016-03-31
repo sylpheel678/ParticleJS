@@ -89,12 +89,13 @@ p.frameBounds = [rect];
 
 	// レイヤー 1
 	this.shape = new cjs.Shape();
-	this.shape.graphics.f("#FFFFFF").s().p("AjZDbQgygyAehlQAchiBchbQBahaBkgdIAigJIAKCJICFAMQgCAPgEAPQgeBjhaBaQhcBchiAcQgmALgfAAQg0AAgegfg");
+	this.shape.graphics.f("#FFFFFF").s().p("Ah3C9QgzhbAAiAQAAh/AzhcIATgfIBlBaIBnhVQAJAMAIANQAyBdAAB/QAACAgzBbQg0BbhEABQhFAAgyhcg");
+	this.shape.setTransform(0.1,2.9);
 
 	this.timeline.addTween(cjs.Tween.get(this.shape).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = rect = new cjs.Rectangle(-25,-25,50,50);
+p.nominalBounds = rect = new cjs.Rectangle(-17,-25.3,34.3,56.3);
 p.frameBounds = [rect];
 
 
@@ -242,7 +243,7 @@ if (loop == null) { loop = false; }	this.initialize(mode,startPosition,loop,{});
 	this.timeline.addTween(cjs.Tween.get({}).to({state:[{t:this.instance_11},{t:this.instance_10},{t:this.instance_9},{t:this.instance_8},{t:this.instance_7},{t:this.instance_6},{t:this.instance_5},{t:this.instance_4},{t:this.instance_3},{t:this.instance_2},{t:this.instance_1},{t:this.instance}]}).wait(1));
 
 }).prototype = p = new cjs.MovieClip();
-p.nominalBounds = rect = new cjs.Rectangle(275,200,550,286.3);
+p.nominalBounds = rect = new cjs.Rectangle(275,200,550,292.3);
 p.frameBounds = [rect];
 
 })( (particlejs = particlejs||{}).assets = particlejs.assets || {} , images = images||{}, createjs = createjs||{}, ss = ss||{});

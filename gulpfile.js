@@ -37,6 +37,10 @@ gulp.task('clean-tmp', function (cb) {
   del(['particlejs.js.tmp', 'tmp'], cb);
 });
 
+gulp.task("develop", function () {
+  return runSequence("build-particle-system", "concat");
+});
+
 gulp.task("start", function () {
   return runSequence("build-particle-system", "concat", "uglify", "clean-tmp");
 });
