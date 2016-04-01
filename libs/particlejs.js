@@ -81,13 +81,13 @@ var DrawingData = (function () {
         this.initialSpeedVariance = 0;
         /** 回転計算の種類です。 */
         this.rotationMode = 0;
-        /** 初期回転角度 (度)です。 */
+        /** 初期回転角度（度）です。 */
         this.initialRotation = 0;
-        /** 初期速度のばらつきです。 */
+        /** 初期回転角度（度）のばらつきです。 */
         this.initialRotationVariance = 0;
-        /** 初期回転角度 (度)です。 */
+        /** 初期回転速度 (度)です。 */
         this.initialRotationSpeed = 0;
-        /** 初期速度のばらつきです。 */
+        /** 初期回転速度のばらつきです。 */
         this.initialRotationSpeedVariance = 0;
         /** 摩擦です。 */
         this.friction = 0;
